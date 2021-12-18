@@ -13,6 +13,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  * @author cesar
  */
 public interface GadgetCrud extends MongoRepository<Gadget, Integer>{
-    public List<Gadget> findByPrice(double price);
+    public List<Gadget> findByPriceLessThanEqual(double price);
     public List<Gadget> findByDescriptionContainingIgnoreCase(String description);
 }

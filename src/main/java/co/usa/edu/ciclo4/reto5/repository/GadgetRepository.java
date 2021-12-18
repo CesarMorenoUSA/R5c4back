@@ -34,7 +34,7 @@ public class GadgetRepository {
     }
 
     public List<Gadget> getByPrice(double price){
-        return gadgetcrud.findByPrice(price);
+        return gadgetcrud.findByPriceLessThanEqual(price);
     }
 
     public List<Gadget> getByDescriptionContains(String description){
