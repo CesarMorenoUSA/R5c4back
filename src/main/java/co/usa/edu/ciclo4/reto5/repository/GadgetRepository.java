@@ -12,32 +12,32 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class GadgetRepository {
     @Autowired
-    private GadgetCrud gdc;
+    private GadgetCrud gadgetcrud;
     public List<Gadget> getAll() {
-        return gdc.findAll();
+        return gadgetcrud.findAll();
     }
 
     public Optional<Gadget> getClothe(Integer id) {
-        return gdc.findById(id);
+        return gadgetcrud.findById(id);
     }
 
     public Gadget create(Gadget gadget) {
-        return gdc.save(gadget);
+        return gadgetcrud.save(gadget);
     }
 
     public void update(Gadget gadget) {
-        gdc.save(gadget);
+        gadgetcrud.save(gadget);
     }
 
     public void delete(Gadget gadget) {
-        gdc.delete(gadget);
+        gadgetcrud.delete(gadget);
     }
 
     public List<Gadget> getByPrice(double price){
-        return gdc.findByPrice(price);
+        return gadgetcrud.findByPrice(price);
     }
 
     public List<Gadget> getByDescriptionContains(String description){
-        return gdc.findByDescriptionContainingIgnoreCase(description);
+        return gadgetcrud.findByDescriptionContainingIgnoreCase(description);
     }
 }

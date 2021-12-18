@@ -12,18 +12,18 @@ import org.springframework.boot.CommandLineRunner;
 @SpringBootApplication
 public class Reto5Application implements CommandLineRunner{
     @Autowired
-    private GadgetCrud GC;
+    private GadgetCrud GadgetCrud;
     @Autowired
-    private UserCrud UC;
+    private UserCrud UserCrud;
     @Autowired
-    private OrderCrud OC;
+    private OrderCrud OrderCrud;
 	public static void main(String[] args) {
 		SpringApplication.run(Reto5Application.class, args);
 	}
     @Override
     public void run(String... args) throws Exception {
-        GC.deleteAll();
-        UC.deleteAll();
-        OC.deleteAll();
+        GadgetCrud.deleteAll();
+        UserCrud.deleteAll();
+        OrderCrud.deleteAll();
     }
 }

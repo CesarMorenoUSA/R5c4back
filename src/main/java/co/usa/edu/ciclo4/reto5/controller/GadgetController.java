@@ -19,46 +19,46 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/gadget/")
+@RequestMapping("/api/gadget")
 @CrossOrigin("*")
 public class GadgetController {
     @Autowired
-    private GadgetService gds;
+    private GadgetService gadgetservice;
 
     @GetMapping("/all")
     public List<Gadget> getAll() {
-        return gds.getAll();
+        return gadgetservice.getAll();
     }
 
     @GetMapping("/{id}")
     public Optional<Gadget> getClothe(@PathVariable("id") Integer id) {
-        return gds.getClothe(id);
+        return gadgetservice.getClothe(id);
     }
 
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public Gadget create(@RequestBody Gadget gadget) {
-        return gds.create(gadget);
+        return gadgetservice.create(gadget);
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Gadget update(@RequestBody Gadget gadget) {
-        return gds.update(gadget);
+        return gadgetservice.update(gadget);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") Integer id) {
-        return gds.delete(id);
+        return gadgetservice.delete(id);
     }
     @GetMapping("/price/{price}")
     public List<Gadget> getByPrice(@PathVariable("price") double price){
-        return gds.getByPrice(price);
+        return gadgetservice.getByPrice(price);
     }
 
     @GetMapping("/description/{description}")
     public List<Gadget> getByDescriptionContains(@PathVariable("description") String description){
-        return gds.getByDescriptionContains(description);
+        return gadgetservice.getByDescriptionContains(description);
     }
 }

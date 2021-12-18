@@ -17,28 +17,28 @@ import org.springframework.stereotype.Service;
 @Service
 public class GadgetService {
     @Autowired
-    private GadgetRepository gdr;
+    private GadgetRepository gadgetrepository;
     
     public List<Gadget> getAll() {
-        return gdr.getAll();
+        return gadgetrepository.getAll();
     }
 
     public Optional<Gadget> getClothe(Integer id) {
-        return gdr.getClothe(id);
+        return gadgetrepository.getClothe(id);
     }
 
     public Gadget create(Gadget gadget) {
         if (gadget.getId() == null) {
             return gadget;
         } else {
-            return gdr.create(gadget);
+            return gadgetrepository.create(gadget);
         }
     }
 
     public Gadget update(Gadget gadget) {
 
         if (gadget.getId() != null) {
-            Optional<Gadget> dbGadget = gdr.getClothe(gadget.getId());
+            Optional<Gadget> dbGadget = gadgetrepository.getClothe(gadget.getId());
             if (!dbGadget.isEmpty()) {
 
                 if (gadget.getBrand()!= null) {
@@ -70,7 +70,7 @@ public class GadgetService {
                 }
 
                 dbGadget.get().setAvailability(gadget.isAvailability());
-                gdr.update(dbGadget.get());
+                gadgetrepository.update(dbGadget.get());
                 return dbGadget.get();
             } else {
                 return gadget;
@@ -82,16 +82,16 @@ public class GadgetService {
 
     public boolean delete(Integer reference) {
         Boolean aBoolean = getClothe(reference).map(gadget -> {
-            gdr.delete(gadget);
+            gadgetrepository.delete(gadget);
             return true;
         }).orElse(false);
         return aBoolean;
     } 
     public List<Gadget> getByPrice(double price){
-        return gdr.getByPrice(price);
+        return gadgetrepository.getByPrice(price);
     }
 
     public List<Gadget> getByDescriptionContains(String description){
-        return gdr.getByDescriptionContains(description);
+        return gadgetrepository.getByDescriptionContains(description);
     }
 }
